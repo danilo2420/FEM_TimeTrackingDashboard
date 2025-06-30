@@ -60,7 +60,10 @@
 .card {
     background-color: var(--orange300);
 
-    border-radius: 15px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 26px;
+    border-bottom-right-radius: 26px;
 
     background-image: url('../images/icon-work.svg');
     background-repeat: no-repeat;
@@ -73,4 +76,28 @@
 
     background-color: var(--navy900);
     border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card__info__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card__info__top__ellipsis {
+    height: fit-content;
+}
+
+.card__info__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card__info_bottom__lastTime {
+    color: var(--navy200);
 }
