@@ -4,6 +4,10 @@
     margin: 81px 24px;
 
     flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 /* User */
@@ -50,4 +54,23 @@
 .user__options__item {
     flex: 1 1 0;
     text-align: center;
+}
+
+/* Cards */
+.card {
+    background-color: var(--orange300);
+
+    border-radius: 15px;
+
+    background-image: url('../images/icon-work.svg');
+    background-repeat: no-repeat;
+    background-position: right 17.5px top -11px;
+}
+
+.card__info {
+    margin-top: 38px;
+    padding: 27.5px 24px;
+
+    background-color: var(--navy900);
+    border-radius: 15px;
 }
