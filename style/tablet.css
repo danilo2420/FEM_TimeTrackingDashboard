@@ -1,0 +1,29 @@
+@import 'mobile.css';
+
+@media (min-width: 600px) {
+    .container {
+        margin: 78px;
+        max-width: 612px;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    } 
+
+    .user {
+        grid-column-start: 1;
+        grid-column-end: -1;
+    }
+
+    .user__details {
+        padding: 34.5px 32px;
+    }
+
+    .user__options {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .user__options__item {
+        max-width: 110px;
+    }
+}
