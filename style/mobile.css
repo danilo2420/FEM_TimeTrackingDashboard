@@ -88,3 +88,18 @@
     background-image: url('../images/icon-self-care.svg');
     background-color: var(--yellow300);
 }
+
+.container {
+        animation: 1s ease-out 0s 1 slideIn;
+    }
+
+    @keyframes slideIn {
+        0% {
+            transform: translateX(-45%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0%);
+            opacity: 1;
+        }
+    }
