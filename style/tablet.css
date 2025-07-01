@@ -1,6 +1,6 @@
 @import 'mobile.css';
 
-@media (min-width: 600px) {
+@media (min-width: 700px) {
     .container {
         margin: 78px;
         max-width: 612px;
@@ -30,6 +30,7 @@
 
     /* Cards */
     .card__info {
+        padding: 25.5px 21.5px;
         gap: 16px;
     }
 
@@ -37,5 +38,12 @@
         flex-direction: column;
         align-items: start;
         gap: 8px;
+    }
+
+    .card__info_bottom__time {
+        font-size: 56px;
+        font-weight: 300;
+        line-height: 66px;
+        letter-spacing: 0px;
     }
 }
