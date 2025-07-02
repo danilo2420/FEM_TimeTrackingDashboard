@@ -3,13 +3,14 @@ const options = document.getElementById('user__options');
 const cards = document.querySelectorAll('.card');
 
 /* Variables */
-let currentOption = 'daily'; // Use this later 
+let currentOption = undefined; // Use this later 
 const map = new Map();
 
 /* Functions */
 function main() {
     initializeMap();
     configureOptions();
+    initializeDailyData();
 }
 
 function initializeMap() {
@@ -22,8 +23,9 @@ function initializeMap() {
 function configureOptions() {
     for (option of options.children) {
         option.addEventListener('click', (event) => {
+            currentOption = event.target.dataset.item;
             styleOptions(event);
-            loadData(event.target.dataset.item);
+            loadData();
         })
     }
 }
@@ -35,17 +37,55 @@ function styleOptions(event) {
     event.target.classList.add('item--active');
 }
 
-function loadData(value) {
-    console.log('value is ' + value);
+function loadData() {
     fetch('data.json')
         .then((response) => {
             if(!response.ok) return console.log('Something went wrong');
             return response.json()
         }).then((data) => {
-            for (item of data) {
-                console.log(item);
-            }
+            if (data) setData(data);
         });
+}
+
+function setData(data) {
+    for (cardData of data) {
+        const currentCard = map.get(cardData.title);
+        setCardData(currentCard, cardData);
+    }
+}
+
+function setCardData(card, data) {
+    timeframes = data.timeframes[currentOption];
+
+    const currentTime = card.querySelector('.card__info_bottom__time');
+    currentTimeValue = timeframes.current;
+    currentTime.innerText = currentTimeValue == 1 ? 
+                            currentTimeValue + 'hr' :
+                            currentTimeValue + 'hrs';
+
+    const lastTime = card.querySelector('.card__info_bottom__lastTime');
+    
+    lastTimeSecondaryText = undefined; 
+    switch (currentOption) {
+        case 'daily':
+            lastTimeSecondaryText = 'Yesterday - ';
+            break;
+        case 'weekly':
+            lastTimeSecondaryText = 'Last Week - ';
+            break;
+        case 'monthly':
+            lastTimeSecondaryText = 'Last Month - ';
+            break;
+    }
+
+    lastTimeValue = timeframes.previous;
+    lastTime.innerText = lastTimeSecondaryText + lastTimeValue + 
+                         (lastTimeValue == '1' ? 'hr' : 'hrs');
+}
+
+function initializeDailyData() {
+    currentOption = 'daily';
+    loadData();
 }
 
 main();
