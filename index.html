@@ -12,7 +12,7 @@
 
   <link rel="stylesheet" href="style/desktop.css">
 
-  <script src="scripts/main.js"></script>
+  <script defer src="scripts/main.js"></script>
 </head>
 <body>
   <div class="container">
@@ -28,10 +28,10 @@
           <div class="user__info__details__name tp4">Jeremy Robson</div>
         </div>
       </div>
-      <div class="user__options tp5--regular">
-        <div class="user__options__item">Daily</div>
-        <div class="user__options__item">Weekly</div>
-        <div class="user__options__item">Monthly</div>
+      <div id="user__options" class="user__options tp5--regular">
+        <div class="user__options__item" data-item="daily">Daily</div>
+        <div class="user__options__item" data-item="weekly">Weekly</div>
+        <div class="user__options__item" data-item="monthly">Monthly</div>
       </div>
     </div>
     <!-- Cards -->
