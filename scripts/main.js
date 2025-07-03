@@ -9,29 +9,44 @@ const map = new Map();
 
 /* Functions */
 function main() {
-    setTimeout(runUserAnimation, 300);
+    setTimeout(runUserAnimation, 500);
     initializeMap();
     configureOptions();
     initializeDailyData();
 }
 
 function runUserAnimation() {
-    const str = "Jeremy Robson";
+    const str = "Jeremy Robx*____*Robson";
     usernameElement.innerText = "";
 
     let curr = "";
     let index = 0;
+    let skip = false;
 
     let fn = setInterval(() => {
-        curr += str[index];
-        index++;
-        console.log(curr);
-        usernameElement.innerText = curr;
+        if (!skip) {
+            switch (str[index]) {
+                case "_":
+                    curr = curr.slice(0, curr.length - 1);
+                    break;
+                case "*":
+                    skip = true;
+                    break;
+                default:
+                    curr += str[index];
+            }
+            // Set value in element
+            usernameElement.innerText = curr;
 
-        if (curr == str) {
-            clearInterval(fn);
-        }
-    }, 120);
+            // Index logic
+            index++;
+            if (index >= str.length) {
+                clearInterval(fn);
+            }
+        } else {
+            skip = false;
+        }        
+    }, 80);
 }
 
 function initializeMap() {
@@ -129,21 +144,6 @@ function numberAnimation(cardChild, value, initialDelay, fast) {
     }
 
     setTimeout(fn, delay);
-
-    /*
-    let counter = 0;
-    let delay = 50; // ms?
-
-    let fn = setInterval(() => {
-        if (counter <= value) {
-            cardChild.innerText = counter == 1 ? 
-                                  counter + 'hr' :
-                                  counter + 'hrs';
-        } else {
-            clearInterval(fn);
-        }
-        counter++;
-    }, delay);*/
 }
 
 function initializeDailyData() {
