@@ -1,10 +1,8 @@
 @import 'mobile.css';
 
-@media (min-width: 700px) {
+@media (min-width: 735px) {
     .container {
         margin: 78px;
-        max-width: 612px;
-
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
     } 
@@ -32,6 +30,7 @@
     .card__info {
         padding: 25.5px 21.5px;
         gap: 16px;
+        
     }
 
     .card__info__bottom {
@@ -45,5 +44,15 @@
         font-weight: 300;
         line-height: 66px;
         letter-spacing: 0px;
+    }
+
+    .user__options__item:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+    }
+
+    .card__info__top__ellipsis:hover {
+        cursor: pointer;
+        transform: scale(1.2);
     }
 }

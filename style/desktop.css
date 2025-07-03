@@ -80,15 +80,5 @@
         background-color: var(--navy800);
         box-shadow: 0px 10px 30px #151d35;
     }
-
-    .user__options__item:hover {
-        cursor: pointer;
-        transform: scale(1.05);
-    }
-
-    .card__info__top__ellipsis:hover {
-        cursor: pointer;
-        transform: scale(1.2);
-    }
     
 }
