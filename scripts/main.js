@@ -60,7 +60,12 @@ function setCardData(card, data) {
     // Set current time
     const currentTime = card.querySelector('.card__info_bottom__time');
     let currentTimeValue = timeframes.current;
-    numberAnimation(currentTime, currentTimeValue);
+
+    if (data.title == 'Work' && currentOption == 'monthly'){
+        numberAnimation(currentTime, currentTimeValue, 1, true);
+    }
+    else 
+        numberAnimation(currentTime, currentTimeValue, 40, false);
 
     /*
     currentTime.innerText = currentTimeValue == 1 ? 
@@ -89,10 +94,31 @@ function setCardData(card, data) {
                          (lastTimeValue == '1' ? 'hr' : 'hrs');
 }
 
-function numberAnimation(cardChild, value) {
+function numberAnimation(cardChild, value, initialDelay, fast) {
+    
+    let counter = 0;
+    var delay = initialDelay;
+    const maxDelay = 300;
+
+    let fn = () => {
+        if (counter <= value) {
+            cardChild.innerText = counter == 1 ? 
+                                  counter + 'hr' :
+                                  counter + 'hrs';
+            counter++;
+            if (!fast || counter >= 50)
+                if (delay + 2 < maxDelay)
+                    delay += 2;
+            setTimeout(fn, delay);
+        }
+    }
+
+    setTimeout(fn, delay);
+
+    /*
     let counter = 0;
     let delay = 50; // ms?
-    
+
     let fn = setInterval(() => {
         if (counter <= value) {
             cardChild.innerText = counter == 1 ? 
@@ -102,7 +128,7 @@ function numberAnimation(cardChild, value) {
             clearInterval(fn);
         }
         counter++;
-    }, delay);
+    }, delay);*/
 }
 
 function initializeDailyData() {
