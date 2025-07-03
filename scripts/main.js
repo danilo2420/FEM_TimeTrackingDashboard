@@ -66,12 +66,6 @@ function setCardData(card, data) {
     }
     else 
         numberAnimation(currentTime, currentTimeValue, 40, false);
-
-    /*
-    currentTime.innerText = currentTimeValue == 1 ? 
-                            currentTimeValue + 'hr' :
-                            currentTimeValue + 'hrs';
-                            */
     
     // Set previous time
     const lastTime = card.querySelector('.card__info_bottom__lastTime');
