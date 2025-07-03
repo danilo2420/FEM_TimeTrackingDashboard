@@ -57,14 +57,20 @@ function setData(data) {
 function setCardData(card, data) {
     timeframes = data.timeframes[currentOption];
 
+    // Set current time
     const currentTime = card.querySelector('.card__info_bottom__time');
-    currentTimeValue = timeframes.current;
+    let currentTimeValue = timeframes.current;
+    numberAnimation(currentTime, currentTimeValue);
+
+    /*
     currentTime.innerText = currentTimeValue == 1 ? 
                             currentTimeValue + 'hr' :
                             currentTimeValue + 'hrs';
-
-    const lastTime = card.querySelector('.card__info_bottom__lastTime');
+                            */
     
+    // Set previous time
+    const lastTime = card.querySelector('.card__info_bottom__lastTime');
+
     lastTimeSecondaryText = undefined; 
     switch (currentOption) {
         case 'daily':
@@ -81,6 +87,22 @@ function setCardData(card, data) {
     lastTimeValue = timeframes.previous;
     lastTime.innerText = lastTimeSecondaryText + lastTimeValue + 
                          (lastTimeValue == '1' ? 'hr' : 'hrs');
+}
+
+function numberAnimation(cardChild, value) {
+    let counter = 0;
+    let delay = 50; // ms?
+    
+    let fn = setInterval(() => {
+        if (counter <= value) {
+            cardChild.innerText = counter == 1 ? 
+                                  counter + 'hr' :
+                                  counter + 'hrs';
+        } else {
+            clearInterval(fn);
+        }
+        counter++;
+    }, delay);
 }
 
 function initializeDailyData() {
