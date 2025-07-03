@@ -24,7 +24,6 @@ function runUserAnimation() {
     let skip = false;
 
     let fn = setInterval(() => {
-        console.log("running");
         if (!skip) {
             switch (str[index]) {
                 case "_":
