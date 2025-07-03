@@ -1,4 +1,5 @@
 /* Elements */
+const usernameElement = document.getElementById('username');
 const options = document.getElementById('user__options');
 const cards = document.querySelectorAll('.card');
 
@@ -8,9 +9,29 @@ const map = new Map();
 
 /* Functions */
 function main() {
+    setTimeout(runUserAnimation, 300);
     initializeMap();
     configureOptions();
     initializeDailyData();
+}
+
+function runUserAnimation() {
+    const str = "Jeremy Robson";
+    usernameElement.innerText = "";
+
+    let curr = "";
+    let index = 0;
+
+    let fn = setInterval(() => {
+        curr += str[index];
+        index++;
+        console.log(curr);
+        usernameElement.innerText = curr;
+
+        if (curr == str) {
+            clearInterval(fn);
+        }
+    }, 120);
 }
 
 function initializeMap() {
